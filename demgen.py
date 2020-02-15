@@ -48,7 +48,10 @@ yang = Candidate('Andrew', 'Yang', 'Entrepreneur', 'NY', 'Humanity First')
 
 candidate_list = [bennet, biden, booker, bloomberg, bullock, buttigieg, castro, deblasio, delaney, gabbard, gillibrand, gravel, harris, hickenlooper, inslee, klobuchar, messam, moulton, orourke, patrick, ryan, sanders, sestak, steyer, swalwell, warren, williamson, yang]
 
-# print(len(candidate_list))
+verb_list = ['Double', 'Triple', 'Abolish', 'Eliminate', 'Reduce', 'Establish', 'Re-establish', 'Increase', 'Save', 'Secure', 'Decrease', 'Ensure', 'Generate', 'Limit', 'Fight for', 'Tackle', 'End', 'Cancel', 'Fix', 'Raise', 'Build Up', 'Protect', 'Addess', 'Reform', 'Stop', 'Legalize', 'Decriminalize', 'Criminalize']
+
+noun_list = ['Climate Change', 'Racial Justice', 'the National Debt', 'Maternal Mortality', 'Higher Education', 'American Jobs', 'Healthcare', 'the Opioid Crisis', 'Taxes', 'Affordable Housing', 'Green Jobs', 'the Economy', 'Gun Violence', 'LGBTQ+ Rights', 'Infectious Disease Outbreaks', 'Term Limits', 'Corruption', 'Immigration', 'Student Loan Debt', 'the State Department', 'the Defense Budget', 'Our Troops', 'America', 'the Affordable Care Act', 'Marijuana', 'Universal Basic Income']
+
 first = random.choice(candidate_list).first
 last = random.choice(candidate_list).last
 role = random.choice(candidate_list).role
@@ -61,4 +64,8 @@ if slogan == 'Wayne For America':
 if slogan == 'Seth Moulton For America':
     slogan = first + " " + last + " for America"
 
+verb = random.choice(verb_list)
+noun = random.choice(noun_list)
+
 print(first + " " + last + ", " + role + " from " + state + ": " + slogan)
+print("Signature Issues: " + random.choice(verb_list) + " " + random.choice(noun_list) + ", " + random.choice(verb_list) + " " + random.choice(noun_list) + ", " + random.choice(verb_list) + " " + random.choice(noun_list))
