@@ -42,7 +42,7 @@ sanders = Candidate('Bernie', 'Sanders', 'U.S. Senator', 'VT', 'Not Me. Us.')
 sestak = Candidate('Joe', 'Sestak', 'U.S. Representative', 'PA', 'Accountability For America')
 steyer = Candidate('Tom', 'Steyer', 'Billionaire', 'CA', 'Actions Speak Louder Than Words')
 swalwell = Candidate('Eric', 'Swalwell', 'U.S. Representative', 'CA', 'Go Big. Be Bold. Do Good.')
-warren = Candidate('Elizabeth', 'Warren', 'U.S. Senator', 'MA', 'Persist')
+warren = Candidate('Elizabeth', 'Warren', 'U.S. Senator', 'MA', 'Dream Big, Fight Hard')
 williamson = Candidate('Marianne', 'Williamson', 'Author', 'CA', 'Join The Evolution')
 yang = Candidate('Andrew', 'Yang', 'Entrepreneur', 'NY', 'Humanity First')
 
