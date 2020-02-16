@@ -86,4 +86,4 @@ def generatecandidate():
 while True:
     result = generatecandidate()
     api.update_status(status = result)
-    time.sleep(60*60*24) # once a day
+    time.sleep(60*60*4) # every four hours
