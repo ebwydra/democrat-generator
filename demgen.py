@@ -68,8 +68,14 @@ if slogan == 'Seth Moulton For America':
 verb = random.choice(verb_list)
 noun = random.choice(noun_list)
 
+women_names = ['Tulsi', 'Kirsten', 'Kamala', 'Amy', 'Elizabeth', 'Marianne']
+if first in women_names:
+    pronoun = "her"
+else:
+    pronoun = "his"
+
 result = first + " " + last + ", " + role + " from " + state + ' - "' + slogan + '"'
-result += "\nIn my first 100 days in office, I will: \n1. " + random.choice(verb_list) + " " + random.choice(noun_list) + "\n2. " + random.choice(verb_list) + " " + random.choice(noun_list) + "\n3. " + random.choice(verb_list) + " " + random.choice(noun_list)
+result += "\nIn " + pronoun + " first 100 days in office, " + first + " will: \n1. " + random.choice(verb_list) + " " + random.choice(noun_list) + "\n2. " + random.choice(verb_list) + " " + random.choice(noun_list) + "\n3. " + random.choice(verb_list) + " " + random.choice(noun_list)
 
 print(result)
 
