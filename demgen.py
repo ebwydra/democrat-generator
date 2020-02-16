@@ -1,14 +1,17 @@
 import random
 import tweepy
-from twitterauth import *
+# from twitterauth import *
+from os import environ
+import time
 
-'''
-Attributes that candidates have:
-- first
-- last
-- role
-- state
-'''
+consumer_key = environ['consumer_key']
+consumer_secret = environ['consumer_secret']
+access_token = environ['access_token']
+access_token_secret = environ['access_token_secret']
+
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_token_secret)
+api = tweepy.API(auth)
 
 class Candidate:
      def __init__(self, first, last, role, state, slogan=None):
@@ -53,33 +56,34 @@ verb_list = ['Double', 'Triple', 'Abolish', 'Eliminate', 'Reduce', 'Establish', 
 
 noun_list = ['Climate Change', 'Racial Justice', 'the National Debt', 'Maternal Mortality', 'Higher Education', 'American Jobs', 'Universal Health Care', 'the Opioid Crisis', 'Taxes', 'Affordable Housing', 'Green Jobs', 'the Economy', 'Gun Violence', 'LGBTQ+ Rights', 'Infectious Disease Outbreaks', 'Term Limits', 'Corruption', 'Immigration', 'Student Loan Debt', 'the State Department', 'the Defense Budget', 'Our Troops', 'America', 'the Affordable Care Act', 'Marijuana', 'Universal Basic Income', 'Global Warming', 'Renewable Energy', 'the Cost of Prescription Drugs', 'Voting Rights', 'Voter Suppression', 'the Debt Ceiling', 'Cybersecurity', 'the Minimum Wage', 'Roe v. Wade', 'the Supreme Court', "Workers' Rights", 'Fuel Economy Standards', 'Fracking', 'Offshore Drilling', 'Funding for Planned Parenthood', 'Outsourcing of Jobs Overseas', 'Domestic Terrorism', 'National Security', 'Paid Family Leave', 'Universal Childcare', 'the First Amendment', 'the Second Amendment', 'Endless Wars']
 
-first = random.choice(candidate_list).first
-last = random.choice(candidate_list).last
-role = random.choice(candidate_list).role
-state = random.choice(candidate_list).state
-slogan = random.choice(candidate_list).slogan
-if slogan == 'Deval For All':
-    slogan = first + " For All"
-if slogan == 'Wayne For America':
-    slogan = first + " For America"
-if slogan == 'Seth Moulton For America':
-    slogan = first + " " + last + " for America"
+def generatecandidate():
+    first = random.choice(candidate_list).first
+    last = random.choice(candidate_list).last
+    role = random.choice(candidate_list).role
+    state = random.choice(candidate_list).state
+    slogan = random.choice(candidate_list).slogan
+    if slogan == 'Deval For All':
+        slogan = first + " For All"
+    if slogan == 'Wayne For America':
+        slogan = first + " For America"
+    if slogan == 'Seth Moulton For America':
+        slogan = first + " " + last + " for America"
 
-verb = random.choice(verb_list)
-noun = random.choice(noun_list)
+    verb = random.choice(verb_list)
+    noun = random.choice(noun_list)
 
-women_names = ['Tulsi', 'Kirsten', 'Kamala', 'Amy', 'Elizabeth', 'Marianne']
-if first in women_names:
-    pronoun = "her"
-else:
-    pronoun = "his"
+    women_names = ['Tulsi', 'Kirsten', 'Kamala', 'Amy', 'Elizabeth', 'Marianne']
+    if first in women_names:
+        pronoun = "her"
+    else:
+        pronoun = "his"
 
-result = first + " " + last + ", " + role + " from " + state + ' - "' + slogan + '"'
-result += "\nIn " + pronoun + " first 100 days in office, " + first + " will: \n1. " + random.choice(verb_list) + " " + random.choice(noun_list) + "\n2. " + random.choice(verb_list) + " " + random.choice(noun_list) + "\n3. " + random.choice(verb_list) + " " + random.choice(noun_list)
+    result = first + " " + last + ", " + role + " from " + state + ' - "' + slogan + '"'
+    result += "\nIn " + pronoun + " first 100 days in office, " + first + " will: \n1. " + random.choice(verb_list) + " " + random.choice(noun_list) + "\n2. " + random.choice(verb_list) + " " + random.choice(noun_list) + "\n3. " + random.choice(verb_list) + " " + random.choice(noun_list)
 
-print(result)
+    return result
 
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
-api = tweepy.API(auth)
-api.update_status(status = result)
+while True:
+    result = generatecandidate()
+    api.update_status(status = result)
+    time.sleep(60*60*24) # once a day
